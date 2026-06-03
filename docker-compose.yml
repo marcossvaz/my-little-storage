@@ -1,0 +1,18 @@
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: myStorage
+      POSTGRES_PASSWORD: myStorage
+      POSTGRES_DB: myStorage
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Optional: Uncomment below to run initial SQL scripts automatically
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
