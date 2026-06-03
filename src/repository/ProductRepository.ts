@@ -14,4 +14,8 @@ export class ProductRepository {
             }
         })
     }
+
+    async getAll() {
+        return await prisma.product.findMany({})
+    }
 }

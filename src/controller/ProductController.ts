@@ -14,4 +14,13 @@ export class ProductController {
         }
     }
 
+    getAll = async (req: Request, res: Response) => {
+        try {
+            const result = await ProductServiceFactories.getAll();
+            res.status(201).json(result);
+        } catch(err: any) {
+            res.status(400).json({error: err.message});
+        }
+    }
+
 }

@@ -7,5 +7,6 @@ const routesProduct = new ProductController()
 
 
 
-
-routes.post("/product", routesProduct.create)
+// ABOUT PRODUCT
+routes.post("/product", routesProduct.create);
+routes.get('/products', routesProduct.getAll);

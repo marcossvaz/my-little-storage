@@ -14,4 +14,8 @@ export class ProductService {
 
         return result
     }
+
+    async getAll() {
+        return await this._productRepository.getAll();
+    }
 }
