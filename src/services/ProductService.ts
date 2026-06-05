@@ -27,4 +27,8 @@ export class ProductService {
     async update(data: IProduct, id: IProductIdSchema) {
         return await this._productRepository.update(data, id.id);
     }
+
+    async delete(id: string) {
+        return await this._productRepository.delete(id);
+    }
 }

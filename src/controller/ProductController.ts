@@ -39,9 +39,19 @@ export class ProductController {
             const { id } = productIdSchema.parse(req.params);
             const valueBody = productSchema.parse(req.body);
 
-            const result = await ProductServiceFactories.update( valueBody, {id});
+            const result = await ProductServiceFactories.update(valueBody, { id });
             res.status(201).json(result);
-        } catch (err: any){
+        } catch (err: any) {
+            res.status(401).json({ error: err.message });
+        }
+    }
+
+    delete = async (req: Request, res: Response) => {
+        try {
+            const { id } = productIdSchema.parse(req.params);
+            const result = await ProductServiceFactories.delete(id);
+            res.status(201).json(result);
+        } catch(err: any) {
             res.status(401).json({error: err.message});
         }
     }

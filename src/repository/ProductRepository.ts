@@ -1,3 +1,4 @@
+import { includes } from "zod";
 import { prisma } from "../lib/prisma.js";
 import { Product } from "../models/Product.js";
 
@@ -34,6 +35,15 @@ export class ProductRepository {
                 name: data.name,
                 quantity: data.quantity,
                 value_unit: data.value_unit,
+            }
+        })
+    }
+
+    async delete(id: string) {
+        return await prisma.product.update({
+            where: {id:id},
+            data: {
+                status: false
             }
         })
     }
