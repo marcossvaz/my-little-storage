@@ -10,7 +10,6 @@ export class ProductRepository {
                 brand: data.brand,
                 quantity: data.quantity,
                 value_unit: data.quantity,
-                sku: data.sku
             }
         })
     }
@@ -23,6 +22,18 @@ export class ProductRepository {
         return await prisma.product.findFirst({
             where: {
                 id: id
+            }
+        })
+    }
+
+    async update(data: Product, id: string) {
+        return await prisma.product.update({
+            where: {id: id},
+            data: {
+                brand: data.name,
+                name: data.name,
+                quantity: data.quantity,
+                value_unit: data.value_unit,
             }
         })
     }

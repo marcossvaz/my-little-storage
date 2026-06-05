@@ -9,7 +9,6 @@ export const productSchema = z.object({
     brand: z.string().min(2, "digite da marca do produto"),
     category: categoryShemaProduct,
     description:  z.string().min(2, "digite o nome do produto").optional()
-    //TODO colocar os status em bolean
 })
 
 export const productIdSchema = z.object({

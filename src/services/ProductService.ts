@@ -23,4 +23,8 @@ export class ProductService {
     async findById(data: IProductIdSchema) {
         return await this._productRepository.findById(data.id);
     }
+
+    async update(data: IProduct, id: IProductIdSchema) {
+        return await this._productRepository.update(data, id.id);
+    }
 }
