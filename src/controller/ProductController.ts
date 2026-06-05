@@ -1,5 +1,5 @@
 import {Request, Response} from 'express'
-import { productSchema } from './schemas/productSchemas.js'
+import { productIdSchema, productSchema } from './schemas/productSchemas.js'
 import { ProductServiceFactories } from '../services/factories/ProductServiceFactories.js';
 
 
@@ -14,12 +14,23 @@ export class ProductController {
         }
     }
 
-    getAll = async (req: Request, res: Response) => {
+    getAll = async (_req: Request, res: Response) => {
         try {
             const result = await ProductServiceFactories.getAll();
             res.status(201).json(result);
         } catch(err: any) {
             res.status(400).json({error: err.message});
+        }
+    }
+
+    findById = async (req: Request, res: Response) => {
+        try{
+            const value = productIdSchema.parse(req.params);
+
+            const result = await ProductServiceFactories.findById(value);
+            res.status(201).json(result);
+        } catch(err: any) {
+            res.status(401).json({error: err.message});
         }
     }
 

@@ -18,4 +18,12 @@ export class ProductRepository {
     async getAll() {
         return await prisma.product.findMany({})
     }
+
+    async findById(id: string) {
+        return await prisma.product.findFirst({
+            where: {
+                id: id
+            }
+        })
+    }
 }

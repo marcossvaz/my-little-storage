@@ -12,5 +12,11 @@ export const productSchema = z.object({
     //TODO colocar os status em bolean
 })
 
+export const productIdSchema = z.object({
+    id: z.string().min(2, "id é obrigatório"),
+})
+
+
 
 export type IProduct = z.infer<typeof productSchema>;
+export type IProductIdSchema = z.infer<typeof productIdSchema>;

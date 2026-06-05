@@ -1,4 +1,4 @@
-import { IProduct } from "../controller/schemas/productSchemas.js";
+import { IProduct, IProductIdSchema } from "../controller/schemas/productSchemas.js";
 import { ProductRepository } from "../repository/ProductRepository.js";
 import { generateSku } from "./utils/skuGenerate.js";
 
@@ -17,5 +17,10 @@ export class ProductService {
 
     async getAll() {
         return await this._productRepository.getAll();
+    }
+
+
+    async findById(data: IProductIdSchema) {
+        return await this._productRepository.findById(data.id);
     }
 }
